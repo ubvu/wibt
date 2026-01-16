@@ -202,8 +202,9 @@ De volledige presentatie:
 - **Beleidsmedewerkers Tweede Kamer**  
   Contact: **Hugo van Bergen**, Parlement & Wetenschap  
 - **GZ-psychologen & zorgprofessionals**  
-  Contact: **Ulrika Léons**, SKILS  
-:contentReference[oaicite:14]{index=14}
+  Contact: **Ulrika Léons**, SKILS
+- **Wetenschappelijke informatie Specialisten**  
+  Contact: **Pam Kaspers**, VU Universiteitsbibliotheek 
 
 ### Governance
 
