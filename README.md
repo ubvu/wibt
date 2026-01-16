@@ -1,300 +1,286 @@
-# Wetenschap in begrijpelijke taal / Research Made Readable
+# Wetenschap in begrijpelijke taal
 
-> Making open access scientific articles understandable for Dutch-speaking non-academic audiences using open and trustworthy generative AI.
+> Wetenschappelijke open-accessartikelen begrijpelijk maken voor Nederlandstalige niet-academische doelgroepen met behulp van open en betrouwbare generatieve AI.
 
-This repository documents **Wetenschap in begrijpelijke taal**, a collaboration between:
+Deze repository documenteert **Wetenschap in begrijpelijke taal**, een samenwerking tussen:
 
 - [KB Nationale Bibliotheek](https://www.kb.nl/)
-- [Vrije Universiteit Amsterdam – University Library](https://www.ub.vu.nl/)
-- [VU AI & Behaviour group](https://vu.nl/en/about-vu/more-about/artificial-intelligence)
+- [Vrije Universiteit Amsterdam – Universiteitsbibliotheek](https://www.ub.vu.nl/)
+- [VU AI & Behaviour-groep](https://vu.nl/nl/over-vu/meer-over/artificial-intelligence)
 - [Parlement & Wetenschap](https://www.knaw.nl/nl/over-de-knaw/wat-doet-de-knaw/parlement-wetenschap)
 - [SKILS – praktijk voor psychologie & coaching](https://www.skils.nl/)
-- [SURF – AI-hub & Research Cloud](https://www.surf.nl/en)
+- [SURF – AI-hub & Research Cloud](https://www.surf.nl/nl)
 
-The project explores how **large language models (LLMs)** can generate **reliable, readable lay summaries** of scientific articles in Dutch, tailored to real-world users such as **GZ-psychologists** and **policy advisors** in the Dutch parliament. 
-
----
-
-## Table of contents
-
-1. [Motivation](#motivation)
-2. [Project goals](#project-goals)
-3. [What we are building](#what-we-are-building)
-   - [AI pipeline & methodology](#ai-pipeline--methodology)
-   - [Demo tool (prototype)](#demo-tool-prototype)
-   - [Open code, prompts & data](#open-code-prompts--data)
-4. [Research background](#research-background)
-5. [Project organisation](#project-organisation)
-6. [Timeline & status](#timeline--status)
-7. [Related repositories & projects](#related-repositories--projects)
-8. [How to cite](#how-to-cite)
-9. [Contact](#contact)
-10. [License](#license)
+Het project onderzoekt hoe **large language models (LLM’s)** **betrouwbare en begrijpelijke publieksvriendelijke samenvattingen** van wetenschappelijke artikelen in het Nederlands kunnen genereren, afgestemd op echte gebruikers zoals **GZ-psychologen** en **beleidsadviseurs** in het Nederlandse parlement. 
 
 ---
 
-## Motivation
+## Inhoudsopgave
 
-Open science has made more and more research articles **freely accessible**, but *not* necessarily **understandable**.
+1. [Motivatie](#motivatie)  
+2. [Projectdoelen](#projectdoelen)  
+3. [Wat we bouwen](#wat-we-bouwen)  
+   - [AI-pijplijn & methodiek](#ai-pijplijn--methodiek)  
+   - [Demotool (prototype)](#demotool-prototype)  
+   - [Open code, prompts & data](#open-code-prompts--data)  
+4. [Onderzoekskader](#onderzoekskader)  
+5. [Projectorganisatie](#projectorganisatie)  
+6. [Tijdlijn & status](#tijdlijn--status)  
+7. [Gerelateerde repositories & projecten](#gerelateerde-repositories--projecten)  
+8. [Citeren](#citeren)  
+9. [Contact](#contact)  
+10. [Licentie](#licentie)  
 
-- An estimated **40% of open access articles are read by non-academic audiences** (teachers, healthcare professionals, policy makers, citizens).  
-  See *Open for All: Exploring the reach of open access content to non-academic audiences* (Wirsching et al., 2020).  
+---
+
+## Motivatie
+
+Open science heeft ervoor gezorgd dat steeds meer onderzoeksartikelen **vrij toegankelijk** zijn, maar daarmee nog niet **begrijpelijk**.
+
+- Ongeveer **40% van open-accessartikelen wordt gelezen door niet-academische doelgroepen** (docenten, zorgprofessionals, beleidsmakers, burgers).  
+  Zie *Open for All: Exploring the reach of open access content to non-academic audiences* (Wirsching et al., 2020).  
   <https://doi.org/10.5281/zenodo.4143313>
-- These readers often struggle with **dense language, jargon and complex abstracts**, even when they have access. :contentReference[oaicite:1]{index=1}
-- At the same time, **misinformation** is often written in **simple, compelling language** and spreads easily online. :contentReference[oaicite:2]{index=2}
+- Deze lezers hebben vaak moeite met **jargon, complexe zinnen en abstract taalgebruik**. :contentReference[oaicite:1]{index=1}
+- Tegelijkertijd verspreidt **desinformatie** zich makkelijk online omdat het vaak wordt geschreven in **eenvoudige, aansprekende taal**. :contentReference[oaicite:2]{index=2}
 
-Meanwhile, researchers are increasingly asked to:
+Onderzoekers worden ondertussen steeds vaker gevraagd om:
 
-- demonstrate **societal impact**,
-- engage in **public engagement** and **citizen science**,
-- and communicate research outcomes to wider audiences.
+- **maatschappelijke impact** aantoonbaar te maken,
+- **wetenschapscommunicatie** en **public engagement** te doen,
+- en onderzoeksresultaten toegankelijk te maken voor een breed publiek.
 
-However, writing good lay summaries is **time-consuming** and requires skills not all researchers have.
+Maar goede publieksvriendelijke samenvattingen schrijven is **tijdrovend** en vraagt specifieke vaardigheden.
 
-Generative AI offers a potential solution — but **current tools are not transparent, not always reliable, and often depend on Big Tech ecosystems**. We need **open, evaluable and trustworthy** alternatives.
+Generatieve AI biedt een kans — maar huidige tools zijn **niet transparant, niet altijd betrouwbaar, en vaak afhankelijk van Big Tech**. We hebben **open, toetsbare en publieke** alternatieven nodig.
 
 ---
 
-## Project goals
+## Projectdoelen
 
-The project aims to design and validate an **AI-based method** that:
+Het project ontwikkelt en valideert een **AI-gebaseerde methode** die:
 
-1. **Generates Dutch lay summaries** of scientific articles, tailored to:
-   - GZ-psychologists and other healthcare professionals,
-   - policy staff in ministries and parliament,
-   - and other non-academic professionals.
-2. Uses **open and/or publicly governed LLMs** wherever possible (e.g. [WiLLMa – GPT-NL](https://www.gpt-nl.nl/), accessible via [SURF AI-hub](https://www.surf.nl/en/surf-lab-large-language-models)).
-3. Is **transparent and reproducible**:
+1. **Nederlandse publieksvriendelijke samenvattingen** genereert van wetenschappelijke artikelen, afgestemd op:
+   - GZ-psychologen en zorgprofessionals,
+   - beleidsmedewerkers in parlement en ministeries,
+   - andere niet-academische professionals.
+2. Waar mogelijk gebruikmaakt van **open en/of publiek beheerde LLM’s** (zoals [WiLLMa – GPT-NL](https://www.gpt-nl.nl/), via [SURF AI-hub](https://www.surf.nl/nl)).
+3. Volledig **transparant en reproduceerbaar** is:
    - open prompts,
    - open code,
-   - documented pipeline and evaluation metrics.
-4. Is **reliably grounded in the original research**:
-   - minimising hallucinations and over-generalisation,
-   - preserving nuance where it matters.
-5. Can be **scaled** by libraries and content platforms, not only by individual researchers.
+   - gedocumenteerde pijplijn en evaluatiemethodiek.
+4. **Sterk leunt op de brontekst**:
+   - zo min mogelijk hallucinaties,
+   - behoud van nuance.
+5. **Schaalbaar** is voor bibliotheken en contentplatforms.
 
-Ultimately, we want to **bridge the gap between open access and real-world understanding**, and strengthen the role of libraries as **trusted intermediaries** between science and society. 
+Zo willen we de kloof tussen open access en **echte toegankelijkheid** verkleinen en de rol van bibliotheken als **betrouwbare intermediairs** versterken. 
 
 ---
 
-## What we are building
+## Wat we bouwen
 
-### AI pipeline & methodology
+### AI-pijplijn & methodiek
 
-We are designing a summarisation pipeline that combines:
+We ontwikkelen een samenvattingspijplijn gebaseerd op:
 
-- **Prompt engineering & personas**  
-  Carefully designed system prompts for different audiences (e.g. *“Explain this to a Dutch GZ-psychologist”*, *“Explain this to a policy advisor at a ministry”*).  
-  Example prompt repository: <https://github.com/ubvu/Layman_Summaries> :contentReference[oaicite:4]{index=4}
-- **Multiple LLM configurations**  
-  We experiment with:
-  - open models (e.g. WiLLMa / GPT-NL, LLaMA, Mistral),
-  - closed models (e.g. GPT-4.x, Gemini) for benchmarking,  
-  comparing readability, factuality and relevance. :contentReference[oaicite:5]{index=5}
+- **Prompt engineering & persona’s**  
+  Doelgroepgerichte prompts (bv. *“Leg dit uit aan een Nederlandse GZ-psycholoog”*, *“Leg dit uit aan een beleidsadviseur”*).  
+  Zie voorbeeldrepo: <https://github.com/ubvu/Layman_Summaries> :contentReference[oaicite:4]{index=4}
+- **Meerdere LLM-configuraties**  
+  We experimenteren met:
+  - open modellen (WiLLMa / GPT-NL, LLaMA, Mistral),
+  - gesloten modellen voor benchmarkdoeleinden (GPT-4.x, Gemini).  
+  :contentReference[oaicite:5]{index=5}
 - **Retrieval-Augmented Generation (RAG)**  
-  Connecting the model to the source article (PDF/BibTeX) to reduce hallucinations and ensure traceability.
-- **Evaluation with real users**  
-  - **Factuality** checked by subject librarians and domain experts,
-  - **Readability & usefulness** evaluated by GZ-psychologists and parliamentary staff via surveys and interviews.
-- **Automated metrics** (inspired by state-of-the-art research): :contentReference[oaicite:6]{index=6}  
-  - Readability: Flesch–Kincaid, LIX, SARI, etc.  
-  - Relevance & coverage: ROUGE, BERTScore, semantic similarity.  
-  - Factuality & hallucination detection: model-assisted evaluation (e.g. MSumBench-style key-fact checking).
+  Om modellen direct aan de oorspronkelijke brontekst te koppelen.
+- **Evaluatie met echte gebruikers**  
+  - Feitelijke correctheid door bibliothecarissen en domeinexperts,
+  - leesbaarheid & bruikbaarheid door GZ-psychologen en beleidsmedewerkers.
+- **Automatische metrics** (gebaseerd op state-of-the-art) :contentReference[oaicite:6]{index=6}  
+  - Leesbaarheid: Flesch–Kincaid, LIX, SARI  
+  - Dekking & relevantie: ROUGE, BERTScore  
+  - Factuality-checking met modelondersteuning
 
-The methodology is informed by our literature review on **LLM-based lay summarisation** (*State of the Art in LLM-Generated Lay Summaries of Scientific Articles*). :contentReference[oaicite:7]{index=7}
+De methodiek is gebaseerd op onze literatuurstudie: *State of the Art in LLM-Generated Lay Summaries*. :contentReference[oaicite:7]{index=7}
 
 ---
 
-### Demo tool (prototype)
+### Demotool (prototype)
 
-We are building a **research prototype** (not production-ready) that allows users to:
+We bouwen een **onderzoeksprototype** waarmee gebruikers:
 
-1. Upload or select a scientific article (PDF/BibTeX).
-2. Choose a **target audience** (e.g. *GZ-psychologist*, *policy advisor*, *journalist*).
-3. Generate:
-   - a structured expert-level summary,
-   - an accessible Dutch lay summary,
-   - and quality indicators (readability, length, etc.).
-4. Inspect and compare different **model + prompt configurations**.
+1. Een wetenschappelijk artikel kunnen uploaden (PDF/BibTeX).  
+2. Een **doelgroep** kunnen kiezen (bv. GZ-psycholoog, beleidsmedewerker).  
+3. Een samenvatting kunnen genereren:
+   - een gestructureerde expertsamenvatting,
+   - een toegankelijke publieksvriendelijke samenvatting,
+   - kwaliteitsindicatoren (leesbaarheid, lengte, enz.).  
+4. Verschillende **modellen + prompts** kunnen vergelijken.
 
-The prototype is developed as a **Streamlit** application and runs on:
+De tool wordt ontwikkeld in **Streamlit** en draait op:
 
-- [SURF Research Cloud](https://www.surf.nl/en/surf-research-cloud), and/or
-- [VU Nebula AI infrastructure](https://networkinstitute.org/),  
-using compute and models made available via the [SURF AI-hub](https://www.surf.nl/en/surf-lab-large-language-models). 
+- [SURF Research Cloud](https://www.surf.nl/nl/surf-research-cloud), en/of  
+- [VU Nebula AI-infrastructuur](https://networkinstitute.org/),  
+met compute en modellen via de [SURF AI-hub](https://www.surf.nl/nl).  
 
-The prototype code and configuration will be released (or linked) here once the first public version is stable.
+
+De code wordt beschikbaar gesteld in deze repository zodra de eerste publieke versie stabiel is.
 
 ---
 
 ### Open code, prompts & data
 
-The project will deliver the following open resources: 
+Het project levert de volgende open resources: 
 
-- **[D1] Technical report**  
-  A detailed description of the LLM pipeline, prompts, evaluation setup and best-performing configurations.  
-  Planned location: *UKB Zenodo community* – <https://zenodo.org/communities/ukb/>
+- **[D1] Technisch rapport**  
+  Documentatie van pijplijn, prompts, experimenten en resultaten.  
+  Publicatie: *UKB Zenodo Community* – <https://zenodo.org/communities/ukb/>
 
-- **[D2] Open GitHub repository with code, prompts & benchmark data**  
-  - Example / predecessor:  
-    - <https://github.com/ubvu/ResearchMadeReadable> – *AI-Powered Research Summary Platform*  
-    - <https://github.com/ubvu/Layman_Summaries> – prompt templates for lay summaries
-  - This repository (`github.io`) functions as the **public landing page** and documentation.
+- **[D2] Open GitHub-repositories met code, prompts & benchmarkdata**  
+  - Voorbeelden / voorgangers:  
+    - <https://github.com/ubvu/ResearchMadeReadable>  
+    - <https://github.com/ubvu/Layman_Summaries>  
+  - Deze repo (**https://github.com/ubvu/wibt**) fungeert als **publieke documentatie en landing page**.
 
-- **[D3] Demonstration platform (prototype)**  
-  Streamlit-based UI, deployed on SURF Research Cloud / VU Nebula, for experimentation and workshops.
+- **[D3] Demonstratieplatform (prototype)**  
+  Streamlit-gebaseerd, voor workshops en evaluaties.
 
-- **[D4] Open access scientific article**  
-  A peer-reviewed publication describing findings and recommendations, to be submitted via the [VU Journal Browser](https://research.vu.nl/en/publications/).
+- **[D4] Open-accesspublicatie**  
+  Te publiceren via de [VU Journal Browser](https://research.vu.nl/nl/publications/).
 
-- **[D5] Communication materials**  
-  Tailored outputs for:
-  - university & national libraries (UKB, SHB),
-  - open access and diamond OA platforms (e.g. [openjournals.nl](https://openjournals.nl/)),
-  - publishers (e.g. Elsevier),
-  - discovery platforms (e.g. [WorldCat](https://www.worldcat.org/), [OpenAIRE](https://www.openaire.eu/)),
-  - citizen science & knowledge platforms (e.g. [openresearch.amsterdam](https://openresearch.amsterdam/), [Kenniscloud](https://www.kenniscloud.nl/)),
-  - science communication networks such as [NEWS – Wetenschap & Samenleving](https://wetenschapensamenleving.nl/). 
+- **[D5] Communicatiematerialen**  
+  Gericht op:
+  - bibliotheken (UKB, SHB),
+  - open access platforms (bv. [openjournals.nl](https://openjournals.nl/)),
+  - uitgevers (bv. Elsevier),
+  - discovery platforms (WorldCat, OpenAIRE),
+  - citizen science en kennisplatforms (openresearch.amsterdam, Kenniscloud),
+  - netwerken als [NEWS – Wetenschap & Samenleving](https://wetenschapensamenleving.nl/).  
+  
 
 ---
 
-## Research background
+## Onderzoekskader
 
-For context, we maintain a **state-of-the-art overview** of LLM-generated lay summaries of scientific articles. Key high-level findings: :contentReference[oaicite:11]{index=11}
+Belangrijke bevindingen uit de literatuur: :contentReference[oaicite:11]{index=11}
 
-- **Readability**  
-  - LLMs (especially GPT-4 variants) often produce **more readable** lay summaries than those written by researchers.
-  - Readability scores can improve by up to ~80% in some benchmarks, while required education level drops.
+- **Leesbaarheid**  
+  LLM’s produceren vaak **leesbaardere** samenvattingen dan onderzoekers.  
+  Soms tot **80% verbeterde scores**.
 
 - **Factuality & bias**  
-  - Models sometimes **hallucinate** or **over-generalise**, especially when summarising subtle or uncertain findings.
-  - There is evidence of **generalisation bias** in LLM summarisation of scientific research (e.g. Peters & Chin-Yee, 2025).
+  Modellen hallucinerem of generaliseren soms te veel.  
+  Voorzichtigheid is nodig bij subtiele of onzekere bevindingen.
 
-- **Human-in-the-loop**  
-  - Best results come from **AI + human expert** workflows, where LLMs produce drafts and humans:
-    - correct factual errors,
-    - add nuance,
-    - adapt tone for specific audiences.
+- **Mens + AI werkt het beste**  
+  LLM’s geven een goede eerste versie;  
+  experts corrigeren nuances en fouten.
 
-- **Methodologies**  
-  - Retrieval-Augmented Generation (RAG), multi-agent setups and automated prompt refinement loops significantly impact quality.
-  - Evaluation frameworks increasingly combine:
-    - automatic metrics (ROUGE, BERTScore, SARI, etc.),
-    - LLM-based judges,
-    - and human expert ratings.
+- **Methodieken**  
+  RAG, multi-agent workflows en geavanceerde evaluatiemethoden hebben veel invloed op de kwaliteit.
 
-The full slide deck:  
-**State of the Art in LLM-Generated Lay Summaries of Scientific Articles** – internal project presentation. :contentReference[oaicite:12]{index=12}
+De volledige presentatie:  
+**State of the Art in LLM-Generated Lay Summaries of Scientific Articles**.  
+:contentReference[oaicite:12]{index=12}
 
 ---
 
-## Project organisation
+## Projectorganisatie
 
-### Core team
+### Kernteam
 
-- **Astrid van Wesenbeeck** – Project Coordinator / Chief Open Science, KB  
-- **Maurice Vanderfeesten** – Library Liaison / Innovation Manager, VU University Library  
-- **Michel Klein** – Methodology & Supervision, Associate Professor AI, VU AI & Behaviour  
-- **Githa** – Methodology & Supervision, VU AI & Behaviour  
-- **Geoffrey** – Prompt engineering, survey coordination, development (CS & Social Science)  
-- **Heleen van Manen** – Program manager PICA & information skills, KB 
+- **Astrid van Wesenbeeck** – Projectcoördinatie / Chief Open Science, KB  
+- **Maurice Vanderfeesten** – Bibliotheekliaison / Innovatiemanager, VU UB  
+- **Michel Klein** – Methodologie & begeleiding, VU AI & Behaviour  
+- **Githa** – Methodologie & begeleiding, VU AI & Behaviour  
+- **Geoffrey** – Prompt engineering, surveys, ontwikkeling  
+- **Heleen van Manen** – Programmaleider informatievaardigheden, KB  
 
-### User groups
 
-- **Policy staff of the Dutch House of Representatives**  
+### Gebruikersgroepen
+
+- **Beleidsmedewerkers Tweede Kamer**  
   Contact: **Hugo van Bergen**, Parlement & Wetenschap  
-- **GZ-psychologists & other mental health professionals**  
-  Contact: **Ulrika Léons**, SKILS :contentReference[oaicite:14]{index=14}
-
-These groups help define **information needs**, **acceptability of tone** and **practical usefulness** of the summaries.
+- **GZ-psychologen & zorgprofessionals**  
+  Contact: **Ulrika Léons**, SKILS  
+:contentReference[oaicite:14]{index=14}
 
 ### Governance
 
-We work with:
+We werken met:
 
-- a **steering committee (stuurgroep)** that ensures alignment with user needs, infrastructure and institutional goals;
-- an **advisory group (adviesgroep)** that safeguards **public values, open science principles and societal impact** (NEWS, SURF, Waag Future Lab, VU Impact Board, etc.). 
-
----
-
-## Timeline & status
-
-Total project duration: **12 months**. 
-
-1. **Months 1–3 – Preparation**
-   - Literature review and state-of-the-art mapping
-   - Defining user requirements with GZ-psychologists & policy staff
-   - Setting up infrastructure (RAG pipeline, LLM access, storage)
-   - Defining and curating the text corpus
-
-2. **Months 4–7 – Experiments**
-   - Designing and testing multiple LLM + prompt configurations
-   - Running structured experiments per target group
-   - Collecting human evaluations on factuality & readability
-
-3. **Months 8–9 – Analysis**
-   - Analysing which combinations work best for which use cases
-   - Deriving general recommendations for Dutch lay summarisation
-
-4. **Months 10–11 – Reporting**
-   - Technical report (D1)
-   - Draft scientific paper (D4)
-   - Internal documentation
-
-5. **Month 12 – Dissemination**
-   - Public demos & workshops
-   - Communication to libraries, publishers and platforms
-   - Preparing follow-up and scaling scenarios
-
-Current status and milestones will be tracked in this repository via [Issues](./issues) and [Project boards](./projects) (once available).
+- een **stuurgroep** (infrastructuur, afstemming, strategie),
+- een **adviesgroep** (publieke waarden, maatschappelijke impact).  
+  Deelnemers o.a.: NEWS, SURF, Waag Future Lab, VU Impact Board.  
+  
 
 ---
 
-## Related repositories & projects
+## Tijdlijn & status
 
-- 🔬 **Research prototype & platform**  
-  <https://github.com/ubvu/ResearchMadeReadable> – AI-powered research summary & evaluation platform  
-- 🧠 **Prompt templates for lay summaries**  
-  <https://github.com/ubvu/Layman_Summaries> – system prompts and examples for different audiences  
-- 🇳🇱 **GPT-NL / WiLLMa Dutch LLM**  
-  <https://www.gpt-nl.nl/> – Dutch language model project (WiLLMa), accessible via SURF AI-hub  
-  SURF demo portal: <https://fred.surf.nl/>
+Totale duur: **12 maanden**. 
 
-- 📊 **Open access readership study**  
+1. **Maand 1–3 – Voorbereiding**
+2. **Maand 4–7 – Experimenten**
+3. **Maand 8–9 – Analyse**
+4. **Maand 10–11 – Rapportage**
+5. **Maand 12 – Disseminatie**
+
+Statusupdates komen beschikbaar via  
+<https://github.com/ubvu/wibt/projects> (wanneer geactiveerd).
+
+---
+
+## Gerelateerde repositories & projecten
+
+- 🔬 **Onderzoeksprototype & platform**  
+  <https://github.com/ubvu/ResearchMadeReadable>
+
+- 🧠 **Prompt templates voor publieksvriendelijke samenvattingen**  
+  <https://github.com/ubvu/Layman_Summaries>
+
+- 🇳🇱 **GPT-NL / WiLLMa**  
+  <https://www.gpt-nl.nl/>  
+  SURF demoportal: <https://fred.surf.nl/>
+  SURF AI-Hub backend: <https://willma.surf.nl>
+
+- 📊 **Open-access-leesgedrag**  
   *Open for All* (Wirsching et al., 2020): <https://doi.org/10.5281/zenodo.4143313>
 
-This GitHub Pages site (`github.io`) serves as a **human-readable project overview** and pointer to these technical resources.
+Deze GitHub Pages-site:  
+**https://ubvu.github.io/wibt/**  
+vormt de centrale projectpagina.
 
 ---
 
-## How to cite
+## Citeren
 
-A suggested generic citation for the project (update once official publications are out):
+Aanbevolen voorlopige citatie:
 
-> Vanderfeesten, M., van Wesenbeeck, A., Klein, M., et al. (2025). *Wetenschap in begrijpelijke taal: LLM-gebaseerde samenvattingen van wetenschappelijke artikelen voor niet-wetenschappelijke doelgroepen.* Project documentation, KB Nationale Bibliotheek & Vrije Universiteit Amsterdam. Retrieved from <https://ubvu.github.io/REPO-NAME/>
+> Vanderfeesten, M., van Wesenbeeck, A., Klein, M., et al. (2025). *Wetenschap in begrijpelijke taal: LLM-gebaseerde publieksvriendelijke samenvattingen van wetenschappelijke artikelen.* Projectdocumentatie. Verkregen van <https://ubvu.github.io/wibt/>
 
-Replace `REPO-NAME` with the actual repository slug once final.
-
-When the **technical report (D1)** and **journal article (D4)** are published, please prefer those formal citations.
+Zodra het technische rapport en het wetenschappelijke artikel zijn gepubliceerd, deze graag gebruiken.
 
 ---
 
 ## Contact
 
-For questions, collaborations or workshop invitations:
-
-- **Astrid van Wesenbeeck** – KB, Chief Open Science  
+- **Astrid van Wesenbeeck** – KB  
   `astrid.vanwesenbeeck@kb.nl`
-- **Maurice Vanderfeesten** – VU University Library, Innovation Manager  
+- **Maurice Vanderfeesten** – VU UB  
   `maurice.vanderfeesten@vu.nl`
 - **Michel Klein** – VU AI & Behaviour  
   `michel.klein@vu.nl`
 
-You can also open an issue in this GitHub repository for technical questions or suggestions.
+Of maak een Issue aan in de repository:  
+<https://github.com/ubvu/wibt/issues>
 
 ---
 
-## License
+## Licentie
 
-The **code** in the related repositories will use an open source license (e.g. MIT or Apache-2.0).  
-The **content of this `README` and project documentation** is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), unless otherwise noted.
+De **code** uit aanverwante repositories is open source (MIT of Apache 2.0).  
+De **inhoud van deze README en projectdocumentatie** valt onder  
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), tenzij anders vermeld.
+
+Zie het `LICENSE`-bestand in deze repository.
