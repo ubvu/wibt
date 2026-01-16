@@ -15,7 +15,7 @@ Het project onderzoekt hoe **large language models (LLM’s)** **betrouwbare en 
 
 ---
 
-!(infographic)[infographic.png]
+![infographic](infographic.png)
 
 ---
 
