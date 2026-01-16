@@ -150,7 +150,7 @@ Het project levert de volgende open resources:
   Streamlit-gebaseerd, voor workshops en evaluaties.
 
 - **[D4] Open-accesspublicatie**  
-  Te publiceren via de [VU Journal Browser](https://research.vu.nl/nl/publications/).
+  Te publiceren via de [VU Journal Browser](https://journalpublishingguide.vu.nl/).
 
 - **[D5] Communicatiematerialen**  
   Gericht op:
@@ -198,7 +198,7 @@ De volledige presentatie:
 - **Michel Klein** – Methodologie & begeleiding, VU AI & Behaviour  
 - **Githa** – Methodologie & begeleiding, VU AI & Behaviour  
 - **Geoffrey** – Prompt engineering, surveys, ontwikkeling  
-- **Heleen van Manen** – Programmaleider informatievaardigheden, KB  
+- **Heleen van Manen** – Programmaleider PICA - Wetenschap en publiek, KB  
 
 
 ### Gebruikersgroepen
@@ -216,7 +216,7 @@ We werken met:
 
 - een **stuurgroep** (infrastructuur, afstemming, strategie),
 - een **adviesgroep** (publieke waarden, maatschappelijke impact).  
-  Deelnemers o.a.: NEWS, SURF, Waag Future Lab, VU Impact Board.  
+  Uitkomsten worden gedeeld met o.a.: NEWS (netwerk wetenschap en samenleving), SURF, Waag Future Lab, VU Impact Board.  
   
 
 ---
