@@ -92,20 +92,15 @@ We ontwikkelen een samenvattingspijplijn gebaseerd op:
   Zie voorbeeldrepo: <https://github.com/ubvu/Layman_Summaries> :contentReference[oaicite:4]{index=4}
 - **Meerdere LLM-configuraties**  
   We experimenteren met:
-  - open modellen (WiLLMa / GPT-NL, LLaMA, Mistral),
-  - gesloten modellen voor benchmarkdoeleinden (GPT-4.x, Gemini).  
+  - open modellen (gpt-oss, Gemma 3, TranslateGemma) 
   :contentReference[oaicite:5]{index=5}
 - **Retrieval-Augmented Generation (RAG)**  
   Om modellen direct aan de oorspronkelijke brontekst te koppelen.
 - **Evaluatie met echte gebruikers**  
   - Feitelijke correctheid door bibliothecarissen en domeinexperts,
   - leesbaarheid & bruikbaarheid door GZ-psychologen en beleidsmedewerkers.
-- **Automatische metrics** (gebaseerd op state-of-the-art) :contentReference[oaicite:6]{index=6}  
-  - Leesbaarheid: Flesch–Kincaid, LIX, SARI  
-  - Dekking & relevantie: ROUGE, BERTScore  
-  - Factuality-checking met modelondersteuning
-
-De methodiek is gebaseerd op onze literatuurstudie: *State of the Art in LLM-Generated Lay Summaries*. :contentReference[oaicite:7]{index=7}
+- **Automatische metrics** (gebaseerd op LLM as a judge) :contentReference[oaicite:6]{index=6}  
+  - Leesbaarheid en feitelijkheid-checking door LLMs.
 
 ---
 
@@ -113,22 +108,21 @@ De methodiek is gebaseerd op onze literatuurstudie: *State of the Art in LLM-Gen
 
 We bouwen een **onderzoeksprototype** waarmee gebruikers:
 
-1. Een wetenschappelijk artikel kunnen uploaden (PDF/BibTeX).  
-2. Een **doelgroep** kunnen kiezen (bv. GZ-psycholoog, beleidsmedewerker).  
+1. Een wetenschappelijk artikel kunnen uploaden (PDF).  
+2. Een **doelgroep** kunnen kiezen (bv. GZ-psycholoog, beleidsmedewerker, algemeen).  
 3. Een samenvatting kunnen genereren:
    - een gestructureerde expertsamenvatting,
    - een toegankelijke publieksvriendelijke samenvatting,
-   - kwaliteitsindicatoren (leesbaarheid, lengte, enz.).  
+   - kwaliteitsindicatoren (leesbaarheid, feitelijkheid, enz.).
 4. Verschillende **modellen + prompts** kunnen vergelijken.
 
-De tool wordt ontwikkeld in **Streamlit** en draait op:
+De tool wordt ontwikkeld in **python** en **Marimo**. Het draait op:
 
-- [SURF Research Cloud](https://www.surf.nl/nl/surf-research-cloud), en/of  
-- [VU Nebula AI-infrastructuur](https://networkinstitute.org/),  
-met compute en modellen via de [SURF AI-hub](https://www.surf.nl/nl).  
+- [Een github pagina](https://github.com), 
+- Met de modellen in verschillende omgevingen waaronder: [VU Nebula AI-infrastructuur](https://networkinstitute.org/), [SURF AI-hub](https://www.surf.nl/nl) en custom OpenAI endpoints.  
 
 
-De code wordt beschikbaar gesteld in deze repository zodra de eerste publieke versie stabiel is.
+De code wordt beschikbaar gesteld in de repository [WIBT-Tool](https://github.com/ubvu/wibt-tool) zodra de eerste publieke versie stabiel is.
 
 ---
 
@@ -144,10 +138,10 @@ Het project levert de volgende open resources:
   - Voorbeelden / voorgangers:  
     - <https://github.com/ubvu/ResearchMadeReadable>  
     - <https://github.com/ubvu/Layman_Summaries>  
-  - Deze repo (**https://github.com/ubvu/wibt**) fungeert als **publieke documentatie en landing page**.
+  - De repository (**https://github.com/ubvu/wibt**) fungeert als **publieke documentatie en landing page**.
 
 - **[D3] Demonstratieplatform (prototype)**  
-  Streamlit-gebaseerd, voor workshops en evaluaties.
+  Python- en Marimo-gebaseerd, voor workshops en evaluaties.
 
 - **[D4] Open-accesspublicatie**  
   Te publiceren via de [VU Journal Browser](https://journalpublishingguide.vu.nl/).
@@ -196,8 +190,8 @@ De volledige presentatie:
 - **Astrid van Wesenbeeck** – Projectcoördinatie / Chief Open Science, KB  
 - **Maurice Vanderfeesten** – Bibliotheekliaison / Innovatiemanager, VU UB  
 - **Michel Klein** – Methodologie & begeleiding, VU AI & Behaviour  
-- **Githa** – Methodologie & begeleiding, VU AI & Behaviour  
-- **Geoffrey** – Prompt engineering, surveys, ontwikkeling  
+- **Githa Wijbenga** – Methodologie & begeleiding, VU AI & Behaviour  
+- **Geoffrey Frankhuizen** – Prompt engineering, surveys, ontwikkeling  
 - **Heleen van Manen** – Programmaleider PICA - Wetenschap en publiek, KB  
 
 
