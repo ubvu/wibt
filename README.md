@@ -7,9 +7,12 @@ Deze repository documenteert **Wetenschap in begrijpelijke taal**, een samenwerk
 - [KB Nationale Bibliotheek](https://www.kb.nl/)
 - [Vrije Universiteit Amsterdam – Universiteitsbibliotheek](https://www.ub.vu.nl/)
 - [VU AI & Behaviour-groep](https://vu.nl/nl/over-vu/meer-over/artificial-intelligence)
+- [VU Open Science](https://vu.nl/nl/over-de-vu/organisaties/open-science)
+- [VU Onderzoeksoverleg (VUOO)](https://vu.nl/nl/over-de-vu/meer-over/advies-en-overlegorganen)
+- [Nebula – VU AI-infrastructuur](https://networkinstitute.org/nebula/)
 - [Parlement & Wetenschap](https://www.knaw.nl/nl/over-de-knaw/wat-doet-de-knaw/parlement-wetenschap)
 - [SKILS – praktijk voor psychologie & coaching](https://www.skils.nl/)
-- [SURF – AI-hub & Research Cloud](https://www.surf.nl/nl)
+- [SURF – AI-hub & Research Cloud](https://www.surf.nl/en/themes/artificial-intelligence/projects-and-collaborations/ai-hub)
 
 Het project onderzoekt hoe **large language models (LLM’s)** **betrouwbare en begrijpelijke publieksvriendelijke samenvattingen** van wetenschappelijke artikelen in het Nederlands kunnen genereren, afgestemd op echte gebruikers zoals **GZ-psychologen** en **beleidsadviseurs** in het Nederlandse parlement. 
 
@@ -78,7 +81,7 @@ Het project ontwikkelt en valideert een **AI-gebaseerde methode** die:
    - GZ-psychologen en zorgprofessionals,
    - beleidsmedewerkers in parlement en ministeries,
    - andere niet-academische professionals.
-2. Waar mogelijk gebruikmaakt van **open en/of publiek beheerde LLM’s** (zoals [WiLLMa – GPT-NL](https://www.gpt-nl.nl/), via [SURF AI-hub](https://www.surf.nl/nl)).
+2. Waar mogelijk gebruikmaakt van **open en/of publiek beheerde LLM’s** (zoals [WiLLMa – GPT-NL](https://www.gpt-nl.nl/), via [SURF AI-hub](https://www.surf.nl/en/themes/artificial-intelligence/projects-and-collaborations/ai-hub)).
 3. Volledig **transparant en reproduceerbaar** is:
    - open prompts,
    - open code,
@@ -106,7 +109,7 @@ De pijplijn genereert eerst meerdere kandidaat-samenvattingen uit hetzelfde arti
   Doelgroepgerichte prompts (bv. *“Leg dit uit aan een Nederlandse GZ-psycholoog”*, *“Leg dit uit aan een beleidsadviseur”*).  
   Zie de daadwerkelijke prompts per doelgroep: <https://github.com/ubvu/wibt-tool/tree/main/prompts>
 - **Meerdere open LLM’s**  
-  gpt-oss-120b en Gemma3-12b voor samenvatting en evaluatie, TranslateGemma-12b als basis voor de vertaling. Deze modellen zijn beschikbaar gesteld via Nebula, het LLM-platform van de VU, en de AI-Hub van SURF.
+  gpt-oss-120b en Gemma3-12b voor samenvatting en evaluatie, TranslateGemma-12b als basis voor de vertaling. Deze modellen zijn beschikbaar gesteld via [Nebula](https://networkinstitute.org/nebula/), het LLM-platform van de VU, en de [AI-Hub](https://www.surf.nl/en/themes/artificial-intelligence/projects-and-collaborations/ai-hub) van SURF.
 - **LLM-as-a-judge voor leesbaarheid**  
   Eén evaluatie-agent scoort elke samenvatting op zinsbouw, taal/jargon, informatiedichtheid en structuur.
 - **Advocate/Skeptic/Adjudicator voor feitelijkheid**  
@@ -129,7 +132,7 @@ We bouwden een **onderzoeksprototype** waarmee gebruikers:
    - kwaliteitsindicatoren (leesbaarheid, feitelijkheid, enz.).
 4. Verschillende **modellen, endpoints en temperature-instellingen** kunnen vergelijken.
 
-De tool is beschikbaar in het Nederlands en Engels, gebouwd in **Python** en **Marimo**, en draait op modellen in verschillende omgevingen waaronder [VU Nebula AI-infrastructuur](https://networkinstitute.org/), [SURF AI-hub](https://www.surf.nl/nl) en custom OpenAI-endpoints.
+De tool is beschikbaar in het Nederlands en Engels, gebouwd in **Python** en **Marimo**, en draait op modellen in verschillende omgevingen waaronder [VU Nebula AI-infrastructuur](https://networkinstitute.org/nebula/), [SURF AI-hub](https://www.surf.nl/en/themes/artificial-intelligence/projects-and-collaborations/ai-hub) en custom OpenAI-endpoints.
 
 De code, prompts en documentatie staan open op [wibt-tool](https://github.com/ubvu/wibt-tool).
 
