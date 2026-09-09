@@ -19,23 +19,32 @@ Het project onderzoekt hoe **large language models (LLM’s)** **betrouwbare en 
 
 ---
 
+## Demo-video
+
+<iframe src="https://drive.google.com/file/d/1cYRSYvuja-uEgv7F1EDdOhzTV2OcAu2b/preview" width="100%" height="480" allow="autoplay" style="border:0;"></iframe>
+
+*Deze video wordt breed toegankelijk gemaakt zodra het bijbehorende voorstel is geaccepteerd bij [BNAIC 2026](https://www.maastrichtuniversity.nl/bnaic2026) (Belgisch-Nederlandse AI Conferentie).*
+
+---
+
 ## Inhoudsopgave
 
-1. [Motivatie](#motivatie)  
-2. [Projectdoelen](#projectdoelen)  
-3. [Wat we bouwen](#wat-we-bouwen)  
+1. [Demo-video](#demo-video)  
+2. [Motivatie](#motivatie)  
+3. [Projectdoelen](#projectdoelen)  
+4. [Wat we bouwen](#wat-we-bouwen)  
    - [AI-pijplijn & methodiek](#ai-pijplijn--methodiek)  
    - [Demotool (prototype)](#demotool-prototype)  
    - [Open code, prompts & data](#open-code-prompts--data)  
-4. [Resultaten](#resultaten)  
-5. [Aanbevelingen](#aanbevelingen)  
-6. [Onderzoekskader](#onderzoekskader)  
-7. [Projectorganisatie](#projectorganisatie)  
-8. [Tijdlijn & status](#tijdlijn--status)  
-9. [Gerelateerde repositories & projecten](#gerelateerde-repositories--projecten)  
-10. [Citeren](#citeren)  
-11. [Contact](#contact)  
-12. [Licentie](#licentie)  
+5. [Resultaten](#resultaten)  
+6. [Aanbevelingen](#aanbevelingen)  
+7. [Onderzoekskader](#onderzoekskader)  
+8. [Projectorganisatie](#projectorganisatie)  
+9. [Tijdlijn & status](#tijdlijn--status)  
+10. [Gerelateerde repositories & projecten](#gerelateerde-repositories--projecten)  
+11. [Citeren](#citeren)  
+12. [Contact](#contact)  
+13. [Licentie](#licentie)  
 
 ---
 
