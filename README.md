@@ -273,8 +273,8 @@ Statusupdates komen beschikbaar via
 
 - 🇳🇱 **GPT-NL / WiLLMa**  
   <https://www.gpt-nl.nl/>  
-  SURF demoportal: <https://fred.surf.nl/>
-  SURF AI-Hub backend: <https://willma.surf.nl>
+  SURF demoportal: <https://aichat.surf.nl>
+  SURF AI-Hub backend: <https://aihub.surf.nl>
 
 - 📊 **Open-access-leesgedrag**  
   *Open for All* (Wirsching et al., 2020): <https://doi.org/10.5281/zenodo.4143313>
