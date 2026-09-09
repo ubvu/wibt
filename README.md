@@ -27,13 +27,15 @@ Het project onderzoekt hoe **large language models (LLM’s)** **betrouwbare en 
    - [AI-pijplijn & methodiek](#ai-pijplijn--methodiek)  
    - [Demotool (prototype)](#demotool-prototype)  
    - [Open code, prompts & data](#open-code-prompts--data)  
-4. [Onderzoekskader](#onderzoekskader)  
-5. [Projectorganisatie](#projectorganisatie)  
-6. [Tijdlijn & status](#tijdlijn--status)  
-7. [Gerelateerde repositories & projecten](#gerelateerde-repositories--projecten)  
-8. [Citeren](#citeren)  
-9. [Contact](#contact)  
-10. [Licentie](#licentie)  
+4. [Resultaten](#resultaten)  
+5. [Aanbevelingen](#aanbevelingen)  
+6. [Onderzoekskader](#onderzoekskader)  
+7. [Projectorganisatie](#projectorganisatie)  
+8. [Tijdlijn & status](#tijdlijn--status)  
+9. [Gerelateerde repositories & projecten](#gerelateerde-repositories--projecten)  
+10. [Citeren](#citeren)  
+11. [Contact](#contact)  
+12. [Licentie](#licentie)  
 
 ---
 
@@ -44,8 +46,8 @@ Open science heeft ervoor gezorgd dat steeds meer onderzoeksartikelen **vrij toe
 - Ongeveer **40% van open-accessartikelen wordt gelezen door niet-academische doelgroepen** (docenten, zorgprofessionals, beleidsmakers, burgers).  
   Zie *Open for All: Exploring the reach of open access content to non-academic audiences* (Wirsching et al., 2020).  
   <https://doi.org/10.5281/zenodo.4143313>
-- Deze lezers hebben vaak moeite met **jargon, complexe zinnen en abstract taalgebruik**. :contentReference[oaicite:1]{index=1}
-- Tegelijkertijd verspreidt **desinformatie** zich makkelijk online omdat het vaak wordt geschreven in **eenvoudige, aansprekende taal**. :contentReference[oaicite:2]{index=2}
+- Deze lezers hebben vaak moeite met **jargon, complexe zinnen en abstract taalgebruik**.
+- Tegelijkertijd verspreidt **desinformatie** zich makkelijk online omdat het vaak wordt geschreven in **eenvoudige, aansprekende taal**.
 
 Onderzoekers worden ondertussen steeds vaker gevraagd om:
 
@@ -85,44 +87,42 @@ Zo willen we de kloof tussen open access en **echte toegankelijkheid** verkleine
 
 ### AI-pijplijn & methodiek
 
-We ontwikkelen een samenvattingspijplijn gebaseerd op:
+De pijplijn genereert eerst meerdere kandidaat-samenvattingen uit hetzelfde artikel en kiest daarna de beste voor vertaling naar het Nederlands.
+
+![Diagram van de pijplijn](pipeline.png)
+
+*Samenvatting (linksboven), leesbaarheidsevaluatie (rechtsonder), feitelijkheidsevaluatie (linksonder) en vertaling (rechtsboven).*
 
 - **Prompt engineering & persona’s**  
   Doelgroepgerichte prompts (bv. *“Leg dit uit aan een Nederlandse GZ-psycholoog”*, *“Leg dit uit aan een beleidsadviseur”*).  
-  Zie voorbeeldrepo: <https://github.com/ubvu/Layman_Summaries> :contentReference[oaicite:4]{index=4}
-- **Meerdere LLM-configuraties**  
-  We experimenteren met:
-  - open modellen (gpt-oss, Gemma 3, TranslateGemma) 
-  :contentReference[oaicite:5]{index=5}
-- **Retrieval-Augmented Generation (RAG)**  
-  Om modellen direct aan de oorspronkelijke brontekst te koppelen.
+  Zie voorbeeldrepo: <https://github.com/ubvu/Layman_Summaries>
+- **Meerdere open LLM’s**  
+  gpt-oss-120b en Gemma3-12b voor samenvatting en evaluatie, TranslateGemma-12b als basis voor de vertaling.
+- **LLM-as-a-judge voor leesbaarheid**  
+  Eén evaluatie-agent scoort elke samenvatting op zinsbouw, taal/jargon, informatiedichtheid en structuur.
+- **Advocate/Skeptic/Adjudicator voor feitelijkheid**  
+  Twee agents beargumenteren per zin vóór en tegen of die uit het bronartikel volgt; een derde agent (de Adjudicator) beslist.
 - **Evaluatie met echte gebruikers**  
-  - Feitelijke correctheid door bibliothecarissen en domeinexperts,
-  - leesbaarheid & bruikbaarheid door GZ-psychologen en beleidsmedewerkers.
-- **Automatische metrics** (gebaseerd op LLM as a judge) :contentReference[oaicite:6]{index=6}  
-  - Leesbaarheid en feitelijkheid-checking door LLMs.
+  - feitelijke juistheid door de oorspronkelijke auteurs en onafhankelijke domeinexperts,
+  - leesbaarheid & bruikbaarheid door GZ-psychologen en informatiespecialisten van de Tweede Kamer.
 
 ---
 
 ### Demotool (prototype)
 
-We bouwen een **onderzoeksprototype** waarmee gebruikers:
+We bouwden een **onderzoeksprototype** waarmee gebruikers:
 
 1. Een wetenschappelijk artikel kunnen uploaden (PDF).  
-2. Een **doelgroep** kunnen kiezen (bv. GZ-psycholoog, beleidsmedewerker, algemeen).  
+2. Een **doelgroep** kunnen kiezen (algemeen, GZ-psycholoog, of informatiespecialist Tweede Kamer).  
 3. Een samenvatting kunnen genereren:
-   - een gestructureerde expertsamenvatting,
-   - een toegankelijke publieksvriendelijke samenvatting,
+   - een gestructureerde Engelse samenvatting,
+   - een toegankelijke Nederlandse publieksvriendelijke samenvatting,
    - kwaliteitsindicatoren (leesbaarheid, feitelijkheid, enz.).
-4. Verschillende **modellen + prompts** kunnen vergelijken.
+4. Verschillende **modellen, endpoints en temperature-instellingen** kunnen vergelijken.
 
-De tool wordt ontwikkeld in **python** en **Marimo**. Het draait op:
+De tool is beschikbaar in het Nederlands en Engels, gebouwd in **Python** en **Marimo**, en draait op modellen in verschillende omgevingen waaronder [VU Nebula AI-infrastructuur](https://networkinstitute.org/), [SURF AI-hub](https://www.surf.nl/nl) en custom OpenAI-endpoints.
 
-- [Een github pagina](https://github.com), 
-- Met de modellen in verschillende omgevingen waaronder: [VU Nebula AI-infrastructuur](https://networkinstitute.org/), [SURF AI-hub](https://www.surf.nl/nl) en custom OpenAI endpoints.  
-
-
-De code wordt beschikbaar gesteld in de repository [WIBT-Tool](https://github.com/ubvu/wibt-tool) zodra de eerste publieke versie stabiel is.
+De code, prompts en documentatie staan open op [wibt-tool](https://github.com/ubvu/wibt-tool).
 
 ---
 
@@ -135,6 +135,7 @@ Het project levert de volgende open resources:
   Publicatie: *UKB Zenodo Community* – <https://zenodo.org/communities/ukb/>
 
 - **[D2] Open GitHub-repositories met code, prompts & benchmarkdata**  
+  - <https://github.com/ubvu/wibt-tool> — de pijplijn zelf: agents, prompts per doelgroep, CLI en Marimo-GUI.
   - Voorbeelden / voorgangers:  
     - <https://github.com/ubvu/ResearchMadeReadable>  
     - <https://github.com/ubvu/Layman_Summaries>  
@@ -158,16 +159,39 @@ Het project levert de volgende open resources:
 
 ---
 
+## Resultaten
+
+We testten de pijplijn op 59 wetenschappelijke artikelen. Veertien mensen uit de doelgroepen beoordeelden in totaal 100 samenvattingen op leesbaarheid; vijf onafhankelijke experts en dertien oorspronkelijke auteurs beoordeelden samen 49 samenvattingen op feitelijke juistheid. *(De onderliggende publicatie is nog in voorbereiding — onderstaande cijfers komen uit het huidige concept en kunnen nog licht wijzigen.)*
+
+**Leesbaarheid.** Op een schaal van 1 tot 5 scoorden zinsbouw, structuur en begrijpelijkheid een mediaan van 4,0. Taalgebruik/jargon en informatiedichtheid haalden vrijwel precies hun optimale score van 3,0 — niet te simpel, niet te complex. De algemene leesbaarheidsscore bleef met een mediaan van 3,0 wat achter: deelnemers gaven vaak aan dat losse zinnen te lang of te ingewikkeld waren om in één keer te volgen, deels door de vertaalstap naar het Nederlands. Mensen die dezelfde samenvatting beoordeelden, waren het onderling regelmatig oneens over hoe leesbaar die was — leesbaarheid is dus deels subjectief. GZ-psychologen beoordeelden een deel van de metrieken hoger dan informatiespecialisten van de Tweede Kamer.
+
+**Feitelijkheid.** Beide feitelijkheidsmetrieken scoorden een mediaan van 4,0: hoe volledig een samenvatting was ten opzichte van het bronartikel, en hoe betrouwbaar (geen verzonnen informatie). Oorspronkelijke auteurs en onafhankelijke experts beoordeelden de feitelijke juistheid vergelijkbaar — externe experts lijken de samenvattingen dus net zo goed te kunnen controleren als de auteurs zelf.
+
+**Taalmodel als beoordelaar.** We lieten ook een taalmodel de samenvattingen zelf beoordelen (LLM-as-judge). Die oordelen weken op vrijwel alle metrieken systematisch af van het oordeel van mensen, en rangschikten de samenvattingen alleen bij volledigheid op vergelijkbare wijze als mensen. Voor feitelijke betrouwbaarheid blijft een menselijke check dus nodig.
+
+---
+
+## Aanbevelingen
+
+- **Houd een mens in de loop.** Taalmodellen blijven foutgevoelig. Een auteur of vakexpert checkt de inhoud voordat een samenvatting wordt gepubliceerd of gebruikt.
+- **Label AI-gegenereerde tekst.** Elke samenvatting krijgt een duidelijk zichtbaar "AI-gegenereerd"-label. Dat is ook wat de EU AI Act (artikel 50) sinds augustus 2026 vraagt van gepubliceerde AI-content.
+- **Reken het energieverbruik mee.** De pijplijn gebruikt per samenvatting best wat rekenkracht; bij opschaling naar veel artikelen is dat een reëel aandachtspunt.
+- **Werk aan de vertaalstap.** Een deel van de leesbaarheidsklachten ontstond bij het vertalen naar het Nederlands. Vervolgonderzoek kijkt naar Nederlandse taalmodellen (zoals GPT-NL/WiLLMa) om onnatuurlijke zinnen te voorkomen.
+- **Zoek een betere maat voor leesbaarheid.** Omdat mensen het onderling oneens zijn, is objectiever meten van leesbaarheid een concrete vervolgstap.
+- **Dit is een methode, geen kant-en-klare dienst.** Organisaties die de aanpak willen overnemen, bouwen zelf verder op de open code en prompts — er is geen productieklare "plug-and-play"-oplossing.
+
+---
+
 ## Onderzoekskader
 
-Belangrijke bevindingen uit de literatuur: :contentReference[oaicite:11]{index=11}
+Belangrijke bevindingen uit de literatuur:
 
 - **Leesbaarheid**  
   LLM’s produceren vaak **leesbaardere** samenvattingen dan onderzoekers.  
   Soms tot **80% verbeterde scores**.
 
 - **Factuality & bias**  
-  Modellen hallucinerem of generaliseren soms te veel.  
+  Modellen hallucineren of generaliseren soms te veel.  
   Voorzichtigheid is nodig bij subtiele of onzekere bevindingen.
 
 - **Mens + AI werkt het beste**  
@@ -175,11 +199,10 @@ Belangrijke bevindingen uit de literatuur: :contentReference[oaicite:11]{index=1
   experts corrigeren nuances en fouten.
 
 - **Methodieken**  
-  RAG, multi-agent workflows en geavanceerde evaluatiemethoden hebben veel invloed op de kwaliteit.
+  Multi-agent workflows en geavanceerde evaluatiemethoden hebben veel invloed op de kwaliteit.
 
 De volledige presentatie:  
-**State of the Art in LLM-Generated Lay Summaries of Scientific Articles**.  
-:contentReference[oaicite:12]{index=12}
+**State of the Art in LLM-Generated Lay Summaries of Scientific Articles**.
 
 ---
 
@@ -217,13 +240,9 @@ We werken met:
 
 ## Tijdlijn & status
 
-Totale duur: **12 maanden**. 
+De pijplijn is gebouwd en getest. De evaluatie is afgerond: 100 leesbaarheidsbeoordelingen en 49 feitelijkheidsbeoordelingen door de doelgroepen zelf (zie [Resultaten](#resultaten)), plus een demo die inmiddels op meerdere plekken is getoond.
 
-1. **Maand 1–3 – Voorbereiding**
-2. **Maand 4–7 – Experimenten**
-3. **Maand 8–9 – Analyse**
-4. **Maand 10–11 – Rapportage**
-5. **Maand 12 – Disseminatie**
+Het technisch rapport en de wetenschappelijke publicatie zijn in voorbereiding. Een preprint volgt naar verwachting in het najaar van 2026 — zodra die er is, linken we hem hier en in de citatie hieronder.
 
 Statusupdates komen beschikbaar via  
 <https://github.com/ubvu/wibt/projects> (wanneer geactiveerd).
@@ -231,6 +250,9 @@ Statusupdates komen beschikbaar via
 ---
 
 ## Gerelateerde repositories & projecten
+
+- 🛠️ **De pijplijn (code, prompts, CLI & demo)**  
+  <https://github.com/ubvu/wibt-tool>
 
 - 🔬 **Onderzoeksprototype & platform**  
   <https://github.com/ubvu/ResearchMadeReadable>
@@ -258,7 +280,7 @@ Aanbevolen voorlopige citatie:
 
 > Vanderfeesten, M., van Wesenbeeck, A., Klein, M., et al. (2025). *Wetenschap in begrijpelijke taal: LLM-gebaseerde publieksvriendelijke samenvattingen van wetenschappelijke artikelen.* Projectdocumentatie. Verkregen van <https://ubvu.github.io/wibt/>
 
-Zodra het technische rapport en het wetenschappelijke artikel zijn gepubliceerd, deze graag gebruiken.
+Het technisch rapport en de wetenschappelijke publicatie zijn nog niet gepubliceerd; een preprint volgt naar verwachting in het najaar van 2026. Gebruik die versie voor citatie zodra deze beschikbaar is.
 
 ---
 
