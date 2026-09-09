@@ -187,8 +187,7 @@ We testten de pijplijn op 59 wetenschappelijke artikelen. Veertien mensen uit de
 Belangrijke bevindingen uit de literatuur:
 
 - **Leesbaarheid**  
-  LLM’s produceren vaak **leesbaardere** samenvattingen dan onderzoekers.  
-  Soms tot **80% verbeterde scores**.
+  Verschillende studies laten zien dat LLM's vaak **leesbaardere** samenvattingen produceren dan onderzoekers zelf.
 
 - **Factuality & bias**  
   Modellen hallucineren of generaliseren soms te veel.  
