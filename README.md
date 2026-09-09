@@ -95,9 +95,9 @@ De pijplijn genereert eerst meerdere kandidaat-samenvattingen uit hetzelfde arti
 
 - **Prompt engineering & persona’s**  
   Doelgroepgerichte prompts (bv. *“Leg dit uit aan een Nederlandse GZ-psycholoog”*, *“Leg dit uit aan een beleidsadviseur”*).  
-  Zie voorbeeldrepo: <https://github.com/ubvu/Layman_Summaries>
+  Zie de daadwerkelijke prompts per doelgroep: <https://github.com/ubvu/wibt-tool/tree/main/prompts>
 - **Meerdere open LLM’s**  
-  gpt-oss-120b en Gemma3-12b voor samenvatting en evaluatie, TranslateGemma-12b als basis voor de vertaling.
+  gpt-oss-120b en Gemma3-12b voor samenvatting en evaluatie, TranslateGemma-12b als basis voor de vertaling. Deze modellen zijn beschikbaar gesteld via Nebula, het LLM-platform van de VU, en de AI-Hub van SURF.
 - **LLM-as-a-judge voor leesbaarheid**  
   Eén evaluatie-agent scoort elke samenvatting op zinsbouw, taal/jargon, informatiedichtheid en structuur.
 - **Advocate/Skeptic/Adjudicator voor feitelijkheid**  
