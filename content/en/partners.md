@@ -1,0 +1,8 @@
+- [![KB National Library of the Netherlands](assets/logos/kb.svg)](https://www.kb.nl/)
+- [![Vrije Universiteit Amsterdam – UB](assets/logos/vu-ub.svg)](https://www.ub.vu.nl/)<span class="partner-name">University Library</span>
+- [![VU AI & Behaviour](assets/logos/vu-ai-behaviour.svg)](https://vu.nl/nl/over-vu/meer-over/artificial-intelligence)<span class="partner-name">AI & Behaviour</span>
+- [![VU Open Science](assets/logos/vu-open-science.svg)](https://vu.nl/nl/over-de-vu/organisaties/open-science)<span class="partner-name">Open Science</span>
+- [![Nebula – VU AI infrastructure](assets/logos/nebula.png)](https://networkinstitute.org/nebula/)<span class="partner-name">Nebula</span>
+- [Parlement & Wetenschap](https://www.knaw.nl/nl/over-de-knaw/wat-doet-de-knaw/parlement-wetenschap)
+- [![SKILS](assets/logos/skils.svg)](https://www.skils.nl/)
+- [![SURF AI Hub](assets/logos/surf.svg)](https://www.surf.nl/en/themes/artificial-intelligence/projects-and-collaborations/ai-hub)

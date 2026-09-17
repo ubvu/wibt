@@ -2,6 +2,17 @@
 
 Alle tekst op de website (`index.html`) komt uit de `.md`-bestanden in deze map. Je hoeft geen HTML of code te kennen: pas een bestand aan zoals je een Word-document zou bewerken, met gewone Markdown-opmaak.
 
+## Twee talen
+
+De site is tweetalig. Elke taal heeft zijn eigen submap met exact dezelfde bestandsnamen:
+
+- `content/nl/` — Nederlandse teksten (standaardtaal)
+- `content/en/` — Engelse teksten
+
+Pas je iets aan in `nl/motivatie.md`, werk dan ook `en/motivatie.md` bij zodat beide taalversies gelijk blijven lopen. De taalknop rechtsboven in de site (NL/EN) laat bezoekers zelf kiezen; hun keuze wordt onthouden voor een volgend bezoek.
+
+Losse teksten die niet in een `.md`-bestand staan (menu-items, knoplabels, alt-tekst van de hero-afbeelding) staan in `assets/js/site.js`, bovenaan in het `UI`-object.
+
 ## Hoe werkt het?
 
 - Elk bestand hoort bij één sectie van de pagina (zie de bestandsnamen hieronder).

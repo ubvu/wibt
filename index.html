@@ -26,19 +26,27 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Ga naar de inhoud</a>
+  <a class="skip-link" href="#main" data-i18n="skipLink">Ga naar de inhoud</a>
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="#top">Wetenschap in <span>begrijpelijke</span> taal</a>
-      <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false"></button>
-      <ul class="nav-links">
-        <li><a href="#motivatie">Motivatie</a></li>
-        <li><a href="#aanpak">Aanpak</a></li>
-        <li><a href="#resultaten">Resultaten</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a class="brand" href="#top">
+        <span data-i18n="brandPrefix">Wetenschap in </span><span class="brand-highlight" data-i18n="brandHighlight">begrijpelijke</span><span data-i18n="brandSuffix"> taal</span>
+      </a>
+      <div class="header-right">
+        <ul class="nav-links">
+          <li><a href="#motivatie" data-i18n="navMotivatie">Motivatie</a></li>
+          <li><a href="#aanpak" data-i18n="navAanpak">Aanpak</a></li>
+          <li><a href="#resultaten" data-i18n="navResultaten">Resultaten</a></li>
+          <li><a href="#team" data-i18n="navTeam">Team</a></li>
+          <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+        </ul>
+        <div class="lang-switch" role="group" aria-label="Language / Taal">
+          <button type="button" class="lang-btn" data-lang="nl">NL</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="nav-toggle" data-i18n-attr="aria-label:menuOpen" aria-label="Menu openen" aria-expanded="false"></button>
+      </div>
     </div>
   </header>
 
@@ -47,70 +55,70 @@
 
     <section class="hero">
       <div class="wrap">
-        <div class="content" id="hero" data-md="content/hero.md" data-hero-ctas></div>
+        <div class="content" id="hero" data-md="hero.md" data-hero-ctas></div>
         <div class="hero-visual">
           <!-- Same infographic as README.md (wibt-infographic.png), resized
                and flattened to assets/hero-infographic.png (1600px, ~750KB)
                instead of the 7.5MB original. The .svg export was tried first
                but clips its own content (missing viewBox + overflow:hidden
                baked into the file), so the raster version is used here. -->
-          <img src="assets/hero-infographic.png" alt="Infographic: wetenschap in begrijpelijke taal. Het probleem: een barrière voor kennis door vakjargon. De oplossing: AI als intelligente tolk, met leesbaarheids- en feitelijkheidscontrole door experts" width="1600" height="894" loading="eager" />
+          <img src="assets/hero-infographic.png" data-i18n-attr="alt:heroImageAlt" alt="Infographic: wetenschap in begrijpelijke taal. Het probleem: een barrière voor kennis door vakjargon. De oplossing: AI als intelligente tolk, met leesbaarheids- en feitelijkheidscontrole door experts" width="1600" height="894" loading="eager" />
         </div>
       </div>
     </section>
 
     <section class="partners" data-reveal>
       <div class="wrap">
-        <h2 class="visually-hidden">Samenwerkingspartners</h2>
-        <div class="content" data-md="content/partners.md"></div>
+        <h2 class="visually-hidden" data-i18n="partnersHidden">Samenwerkingspartners</h2>
+        <div class="content" data-md="partners.md"></div>
       </div>
     </section>
 
     <section id="motivatie" data-reveal>
       <div class="wrap">
-        <div class="content section-head" data-md="content/motivatie.md"></div>
+        <div class="content section-head" data-md="motivatie.md"></div>
       </div>
     </section>
 
     <section id="doelen" class="alt" data-reveal>
       <div class="wrap">
-        <div class="content" data-md="content/doelen.md"></div>
+        <div class="content" data-md="doelen.md"></div>
       </div>
     </section>
 
     <section id="aanpak" data-reveal>
       <div class="wrap">
-        <div class="content" data-md="content/aanpak.md"></div>
+        <div class="content" data-md="aanpak.md"></div>
       </div>
     </section>
 
     <section id="resultaten" class="alt" data-reveal>
       <div class="wrap">
-        <div class="content" data-md="content/resultaten.md"></div>
+        <div class="content" data-md="resultaten.md"></div>
       </div>
     </section>
 
     <section id="aanbevelingen" data-reveal>
       <div class="wrap">
-        <div class="content" data-md="content/aanbevelingen.md"></div>
+        <div class="content" data-md="aanbevelingen.md"></div>
       </div>
     </section>
 
     <section id="onderzoekskader" class="alt" data-reveal>
       <div class="wrap">
-        <div class="content section-head" data-md="content/onderzoekskader.md"></div>
+        <div class="content section-head" data-md="onderzoekskader.md"></div>
       </div>
     </section>
 
     <section id="team" data-reveal>
       <div class="wrap">
-        <div class="content" data-md="content/team.md"></div>
+        <div class="content" data-md="team.md"></div>
       </div>
     </section>
 
     <section id="tijdlijn" class="alt" data-reveal>
       <div class="wrap">
-        <div class="content section-head" data-md="content/tijdlijn.md"></div>
+        <div class="content section-head" data-md="tijdlijn.md"></div>
       </div>
     </section>
   </main>
@@ -118,13 +126,13 @@
   <footer class="site-footer" id="contact">
     <div class="wrap">
       <div class="footer-grid">
-        <div id="verder" class="content" data-md="content/verder.md"></div>
-        <div id="citeren" class="content" data-md="content/citeren.md"></div>
-        <div class="content" data-md="content/contact.md"></div>
+        <div id="verder" class="content" data-md="verder.md"></div>
+        <div id="citeren" class="content" data-md="citeren.md"></div>
+        <div class="content" data-md="contact.md"></div>
       </div>
       <div class="footer-meta">
-        <div class="content" data-md="content/licentie.md"></div>
-        <a href="https://github.com/ubvu/wibt/tree/main/content">Deze teksten bewerken op GitHub</a>
+        <div class="content" data-md="licentie.md"></div>
+        <a href="https://github.com/ubvu/wibt/tree/main/content" data-i18n="editLink">Deze teksten bewerken op GitHub</a>
       </div>
     </div>
   </footer>
