@@ -2,4 +2,4 @@
 
 Open, toetsbare AI zet wetenschappelijke open-accessartikelen om in betrouwbare Nederlandstalige samenvattingen voor zorgprofessionals en beleidsmakers.
 
-[Bekijk de resultaten](#resultaten) [Bekijk de code](https://github.com/ubvu/wibt-tool)
+[Bekijk de resultaten](#resultaten) [Bekijk de video](#video)

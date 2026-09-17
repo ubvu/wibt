@@ -62,6 +62,7 @@ Gebruik het pad **zoals gezien vanaf de website-root** (dus zonder `../` ervoor)
 |---|---|
 | `hero.md` | Titel, subtitel en knoppen bovenaan |
 | `partners.md` | Samenwerkingspartners (onder de titel) |
+| `video.md` | Demo-video |
 | `motivatie.md` | Motivatie |
 | `doelen.md` | Projectdoelen |
 | `aanpak.md` | Wat we bouwen (pijplijn, demotool, open resources) |
