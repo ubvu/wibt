@@ -344,18 +344,23 @@ em {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
-  row-gap: 10px;
+  align-items: center;
+  gap: 28px 36px;
 }
 
 .partners .content li {
   margin: 0;
-  padding: 0 18px;
-  border-left: 1px solid var(--color-border);
+  padding: 0;
   font-size: 0.88rem;
 }
 
-.partners .content li:first-child {
+/* Text-only fallback (no logo file yet): keep the hairline divider rhythm. */
+.partners .content li:not(:has(img)) {
+  padding: 0 18px;
+  border-left: 1px solid var(--color-border);
+}
+
+.partners .content li:not(:has(img)):first-child {
   border-left: none;
   padding-left: 0;
 }
@@ -363,10 +368,36 @@ em {
 .partners .content a {
   color: var(--color-ink-soft);
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
-.partners .content a:hover {
+.partners .content li:not(:has(img)) a:hover {
   color: var(--color-accent);
+}
+
+.partners .content img {
+  height: 32px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+
+.partners .content a:hover img {
+  filter: none;
+  opacity: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .partners .content img {
+    filter: grayscale(1) invert(0.9) brightness(1.3);
+  }
+  .partners .content a:hover img {
+    filter: none;
+  }
 }
 
 /* ---------- Generic section rhythm ---------- */
