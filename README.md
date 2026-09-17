@@ -224,8 +224,8 @@ De volledige presentatie:
 - **Astrid van Wesenbeeck** – Projectcoördinatie / Chief Open Science, KB  
 - **Maurice Vanderfeesten** – Bibliotheekliaison / Innovatiemanager, VU UB  
 - **Michel Klein** – Methodologie & begeleiding, VU AI & Behaviour  
-- **Githa Wijbenga** – Methodologie & begeleiding, VU AI & Behaviour  
-- **Geoffrey Frankhuizen** – Prompt engineering, surveys, ontwikkeling  
+- **Githa Wijbenga** – Research assistant. Verantwoordelijkheden: literatuurstudie, interviews, respondentencontact, prompt- en agentic engineering, data-analyse, rapportage  
+- **Geoffrey Frankhuizen** – Research assistant. Verantwoordelijkheden: software engineering, multi-agent orchestration, prompt engineering, data engineering, rapportage  
 - **Heleen van Manen** – Programmaleider PICA - Wetenschap en publiek, KB  
 
 
