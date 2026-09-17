@@ -27,6 +27,16 @@ Gewone alinea tekst. **Vet** en *cursief* werken zoals verwacht.
 ![Alt-tekst](bestandsnaam.png)
 ```
 
+## Partnerlogo's met een naam eronder
+
+In `partners.md` staat bij sommige VU-onderdelen (die hetzelfde VU-logo delen) een extra naam eronder, bijvoorbeeld:
+
+```
+- [![VU Open Science](assets/logos/vu-open-science.svg)](https://vu.nl/...)<span class="partner-name">Open Science</span>
+```
+
+Die `<span class="partner-name">...</span>` direct na de link is de tekst die klein onder het logo verschijnt. Laat 'm weg voor een partner met een eigen, herkenbaar logo.
+
 ## Afbeeldingen invoegen
 
 Gebruik het pad **zoals gezien vanaf de website-root** (dus zonder `../` ervoor), bijvoorbeeld:

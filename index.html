@@ -9,6 +9,9 @@
   <meta property="og:title" content="Wetenschap in begrijpelijke taal" />
   <meta property="og:description" content="Open, toetsbare AI voor Nederlandstalige publieksvriendelijke samenvattingen van wetenschappelijke artikelen." />
   <meta property="og:type" content="website" />
+  <!-- Social platforms need a raster og:image (SVG isn't reliably supported),
+       so this uses the small rectangular PNG variant rather than the .svg
+       used in the page itself. -->
   <meta property="og:image" content="infographic.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -46,7 +49,12 @@
       <div class="wrap">
         <div class="content" id="hero" data-md="content/hero.md" data-hero-ctas></div>
         <div class="hero-visual">
-          <img src="infographic.png" alt="Infographic: van wetenschappelijk artikel naar publieksvriendelijke Nederlandse samenvatting, met leesbaarheids- en feitelijkheidscontrole" width="1280" height="720" loading="eager" />
+          <!-- Same infographic as README.md (wibt-infographic.png), resized
+               and flattened to assets/hero-infographic.png (1600px, ~750KB)
+               instead of the 7.5MB original. The .svg export was tried first
+               but clips its own content (missing viewBox + overflow:hidden
+               baked into the file), so the raster version is used here. -->
+          <img src="assets/hero-infographic.png" alt="Infographic: wetenschap in begrijpelijke taal. Het probleem: een barrière voor kennis door vakjargon. De oplossing: AI als intelligente tolk, met leesbaarheids- en feitelijkheidscontrole door experts" width="1600" height="894" loading="eager" />
         </div>
       </div>
     </section>
