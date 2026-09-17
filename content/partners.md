@@ -1,0 +1,8 @@
+- [KB Nationale Bibliotheek](https://www.kb.nl/)
+- [Vrije Universiteit Amsterdam – UB](https://www.ub.vu.nl/)
+- [VU AI & Behaviour](https://vu.nl/nl/over-vu/meer-over/artificial-intelligence)
+- [VU Open Science](https://vu.nl/nl/over-de-vu/organisaties/open-science)
+- [Nebula – VU AI-infrastructuur](https://networkinstitute.org/nebula/)
+- [Parlement & Wetenschap](https://www.knaw.nl/nl/over-de-knaw/wat-doet-de-knaw/parlement-wetenschap)
+- [SKILS](https://www.skils.nl/)
+- [SURF AI-Hub](https://www.surf.nl/en/themes/artificial-intelligence/projects-and-collaborations/ai-hub)
